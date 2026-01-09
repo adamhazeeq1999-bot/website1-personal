@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Hobby</title>
+
+<style>
+    /* BASIC STYLE - HAZELNUT THEME */
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to bottom right, #f6c9b2, #fff8ee);
+        overflow-x: hidden;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    /* TITLE DI KIRI */
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-right: 50px;
+    }
+
+    /* MENU LINKS DI KANAN */
+    .nav-links {
+        display: flex;
+        gap: 35px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    /* UNDERLINE ANIMATION */
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #AA6A4B;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: #AA6A4B;
+    }
+
+    /* FLOATING SPARKLES */
+    .sparkles {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .sparkles span {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #f6c9b2;
+        border-radius: 50%;
+        animation: float 6s linear infinite;
+        opacity: 0.6;
+    }
+
+    @keyframes float {
+        0%   { transform: translateY(0); opacity: 0.6; }
+        100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    /* TITLE GLOW */
+    header h1 {
+        font-size: 52px;
+        text-align: center;
+        margin-top: 70px;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353, #AA6A4B);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+        0% { text-shadow: 0px 0px 6px rgba(170, 106, 75, 0.3); }
+        100% { text-shadow: 0px 0px 20px rgba(170, 106, 75, 0.5); }
+    }
+
+    hr {
+        height: 3px;
+        border: none;
+        width: 40%;
+        background: #aa8353;
+        border-radius: 20px;
+        margin: 20px auto 40px auto;
+    }
+
+    /* CONTENT BOX */
+    .section {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .box {
+        background: white;
+        border-radius: 17px;
+        padding: 30px;
+        box-shadow: 0px 0px 25px rgba(170, 106, 75, 0.1);
+        margin-bottom: 40px;
+        border: 1px solid rgba(170, 106, 75, 0.1);
+    }
+
+    .box img {
+        float: left;
+        width: 300px;
+        border-radius: 10px;
+        border: 4px solid #AA6A4B;
+        margin-right: 25px;
+        margin-bottom: 15px;
+        transition: transform 0.3s;
+    }
+
+    .box img:hover {
+        transform: scale(1.02);
+    }
+
+    .box h2 {
+        font-size: 35px;
+        color: #AA6A4B;
+        text-decoration: underline;
+        margin-top: 0;
+    }
+
+    .box p {
+        font-size: 18px;
+        text-align: justify;
+        line-height: 1.6;
+        color: #5a4636;
+    }
+
+    /* BROWN BUTTON */
+    .btn {
+        display: inline-block;
+        background: #AA6A4B;
+        padding: 12px 25px;
+        border-radius: 30px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #c28c6e;
+        transform: scale(1.05);
+    }
+
+    /* GALLERY GRID */
+    .gallery-title {
+        text-align: center;
+        font-size: 45px;
+        color: #AA6A4B;
+        margin: 50px 0 30px 0;
+    }
+
+    .gallery {
+        width: 90%;
+        max-width: 1000px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 4px solid white;
+        transition: 0.4s;
+        box-shadow: 0 4px 15px rgba(170, 106, 75, 0.1);
+    }
+
+    .gallery img:hover {
+        transform: scale(1.07);
+        box-shadow: 0px 0px 20px rgba(170, 106, 75, 0.3);
+        border-color: #AA6A4B;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 30px;
+        margin-top: 60px;
+        background: white;
+        color: #5a4636;
+        font-style: italic;
+        border-radius: 20px 20px 0 0;
+        border-top: 3px solid #f6c9b2;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+        .navbar {
+            padding: 20px 50px;
+        }
+        
+        .nav-links {
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 15px 30px;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .logo {
+            margin-right: 0;
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            gap: 20px;
+        }
+        
+        header h1 {
+            font-size: 40px;
+            margin-top: 100px;
+        }
+        
+        .box {
+            padding: 20px;
+        }
+        
+        .box img {
+            float: none;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+        
+        .box h2 {
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .box p {
+            font-size: 16px;
+        }
+        
+        .gallery {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        
+        .gallery-title {
+            font-size: 36px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            font-size: 16px;
+        }
+        
+        header h1 {
+            font-size: 32px;
+        }
+        
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 15px;
+        }
+        
+        .gallery img {
+            height: 150px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- SPARKLES BACKGROUND -->
+    <div class="sparkles" id="sparkles"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">Fav Hobby</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>🎨 My Hobby ✨</h1>
+        <hr>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="section">
+        <div class="box">
+            <img src="pictures/art10.jpg" alt="Anime Drawing">
+            <h2>DRAWING ⋆ 🖌️</h2>
+            <p>
+                My hobby is drawing in anime style. I love creating characters with expressive eyes,
+                unique hairstyles, and detailed outfits inspired by Japanese animation. Drawing helps
+                me express creativity, emotions, and storytelling through art.
+                <br><br>
+                It improves my patience, imagination, and sketching skills while giving me a fun way
+                to relax. Experimenting with color palettes and poses makes each artwork exciting!
+                <br><br>
+                Every character I draw has a story behind it, and through my art, I can bring my imagination
+                to life on paper. The process of sketching, inking, and coloring is therapeutic and
+                allows me to express emotions that words sometimes cannot capture.
+            </p>
+            <a class="btn" href="artpages.html">🎨 View My Full Artworks</a>
+        </div>
+    </div>
+
+    <!-- GALLERY SECTION -->
+    <h2 class="gallery-title">My Art Gallery 🖼️</h2>
+    <div class="gallery">
+        <img src="pictures/art1.jpg" alt="Art 1">
+        <img src="pictures/art2.jpg" alt="Art 2">
+        <img src="pictures/art3.jpg" alt="Art 3">
+        <img src="pictures/art4.jpg" alt="Art 4">
+        <img src="pictures/art5.jpg" alt="Art 5">
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        &copy; 2025 Aina's Art Portfolio | All drawings are created by me
+        <br>
+        Contact: aina.art@example.com
+    </footer>
+
+    <script>
+        // Create floating sparkles
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const colors = ['#f6c9b2', '#AA6A4B', '#aa8353', '#fff8ee'];
+            
+            for (let i = 0; i < 25; i++) {
+                const sparkle = document.createElement('span');
+                sparkle.style.left = Math.random() * 100 + 'vw';
+                sparkle.style.animationDelay = Math.random() * 5 + 's';
+                sparkle.style.width = Math.random() * 8 + 4 + 'px';
+                sparkle.style.height = sparkle.style.width;
+                sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', createSparkles);
+
+        // Add hover effect to gallery images
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.borderColor = '#AA6A4B';
+                this.style.boxShadow = '0 0 25px rgba(170, 106, 75, 0.4)';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                this.style.borderColor = 'white';
+                this.style.boxShadow = '0 4px 15px rgba(170, 106, 75, 0.1)';
+            });
+        });
+    </script>
+
+</body>
+</html>

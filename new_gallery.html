@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Photo Collection</title>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Gallery</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(to right, #f6c9b2, #fff8ee);
+            margin: 0;
+            padding: 0;
+            color: #5a4636;
+            text-align: center;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #AA6A4B, #aa8353);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-right: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #AA6A4B;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #AA6A4B;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 30px;
+            color: #5a4636;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(170, 106, 75, 0.2);
+        }
+
+        .section {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(170, 106, 75, 0.1);
+            transition: 0.4s;
+            border: 1px solid rgba(170, 106, 75, 0.1);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(170, 106, 75, 0.15);
+        }
+
+        .section h2 {
+            color: #AA6A4B;
+            font-size: 28px;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px solid #f6c9b2;
+            padding-bottom: 10px;
+        }
+        
+        .simple-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(170, 106, 75, 0.1);
+            border: 1px solid rgba(170, 106, 75, 0.1);
+            transition: 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(170, 106, 75, 0.15);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #AA6A4B;
+        }
+
+        .stat-label {
+            color: #5a4636;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .simple-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .simple-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid #f6c9b2;
+            box-shadow: 0 5px 15px rgba(170, 106, 75, 0.1);
+            transition: transform 0.4s, border-color 0.3s;
+        }
+
+        .simple-gallery img:hover {
+            transform: scale(1.05);
+            border-color: #AA6A4B;
+        }
+
+        .btn-home {
+            display: block;
+            width: 150px;
+            margin: 40px auto;
+            padding: 12px 22px;
+            background: #AA6A4B;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 18px;
+            text-align: center;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-home:hover {
+            background: #c28c6e;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            color: #5a4636;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+            font-style: italic;
+            border-top: 3px solid #f6c9b2;
+        }
+
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 20px 50px;
+            }
+            
+            .nav-links {
+                gap: 25px;
+            }
+            
+            .simple-stats {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                margin-right: 0;
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            header {
+                font-size: 28px;
+                padding: 90px 20px 20px;
+            }
+            
+            .simple-stats {
+                gap: 20px;
+            }
+            
+            .stat-box {
+                padding: 15px 25px;
+            }
+            
+            .simple-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+            }
+            
+            header {
+                font-size: 24px;
+                padding: 80px 20px 15px;
+            }
+            
+            .simple-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .simple-gallery img {
+                height: 150px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Gallery</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <h1>Random Photo Collection</h1>
+
+    <div class="simple-gallery">
+        
+        <a href="pictures/pic1.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic1.jpg" alt="Gambar 1">
+            </a>
+            <a href="pictures/pic2.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic2.jpg" alt="Gambar 2">
+            </a>
+            <a href="pictures/pic4.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic4.jpg" alt="Gambar 3">
+            </a>
+            <a href="pictures/pic5.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic5.jpg" alt="Gambar 4">
+            </a>
+            <a href="pictures/pic6.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic6.jpg" alt="Gambar 5">
+            </a>
+            <a href="pictures/pic7.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic7.jpg" alt="Gambar 6">
+            </a>
+            <a href="pictures/pic8.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic8.jpg" alt="Gambar 7">
+            </a>
+            <a href="pictures/pic9.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic9.jpg" alt="Gambar 8">
+            </a>
+            <a href="pictures/pic10.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic10.jpg" alt="Gambar 9">
+            </a>
+            <a href="pictures/pic13.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic13.jpg" alt="Gambar 10">
+            </a>
+            <a href="pictures/pic14.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic14.jpg" alt="Gambar 11">
+            </a>
+            <a href="pictures/pic15.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic15.jpg" alt="Gambar 12">
+            </a>
+            <a href="pictures/pic16.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic16.jpg" alt="Gambar 13">
+            </a>
+            <a href="pictures/pic17.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic17.jpg" alt="Gambar 14">
+            </a>
+            <a href="pictures/pic18.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic18.jpg" alt="Gambar 15">
+            </a>
+            <a href="pictures/pic20.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic20.jpg" alt="Gambar 16">
+            </a>
+            <a href="pictures/pic21.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic21.jpg" alt="Gambar 17">
+            </a>
+            <a href="pictures/pic26.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic26.jpg" alt="Gambar 18">
+            </a>
+            <a href="pictures/pic28.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic28.jpg" alt="Gambar 19">
+            </a>
+            <a href="pictures/pic29.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic29.jpg" alt="Gambar 20">
+            </a>
+            <a href="pictures/pic30.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic30.jpg" alt="Gambar 21">
+            </a>
+            <a href="pictures/pic31.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic31.jpg" alt="Gambar 22">
+            </a>
+            <a href="pictures/pic32.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic32.jpg" alt="Gambar 23">
+            </a>
+            <a href="pictures/pic34.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic34.jpg" alt="Gambar 24">
+            </a>
+            <a href="pictures/pic35.jpg" class="art-link" target="_blank">
+                <img src="pictures/pic35.jpg" alt="Gambar 25">
+            </a>
+    </div>
+
+    <footer>
+        Random Photo Collection &copy; 2023-2025
+    </footer>
+
+</body>
+</html>

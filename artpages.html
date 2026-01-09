@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Artwork Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(to bottom right, #f8e6d6, #fef9f3);
+            text-align: center;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 25px rgba(166, 123, 91, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* TITLE DI KIRI */
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #A67B5B, #C9A27C);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-right: 50px;
+        }
+
+        /* MENU LINKS DI KANAN */
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #A67B5B;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #A67B5B;
+        }
+
+        /* HEADER */
+        h1 {
+            font-size: 48px;
+            margin: 80px 0 10px;
+            background: linear-gradient(90deg, #A67B5B, #C9A27C, #A67B5B);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        hr {
+            width: 40%;
+            height: 3px;
+            border: none;
+            background: linear-gradient(90deg, transparent, #A67B5B, transparent);
+            margin: 10px auto 40px;
+        }
+
+        /* CATEGORY BUTTONS */
+        .category-buttons {
+            margin: 30px 0;
+        }
+
+        .btn-category {
+            padding: 14px 28px;
+            margin: 0 15px;
+            background: #A67B5B;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-category:hover {
+            background: #8B5E3C;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(139, 94, 60, 0.3);
+        }
+
+        .btn-category.active {
+            background: #8B5E3C;
+            box-shadow: 0 0 20px rgba(139, 94, 60, 0.5);
+        }
+
+        /* GALLERY SECTION */
+        .gallery-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .gallery-section h2 {
+            font-size: 32px;
+            color: #5D4037;
+            margin: 30px 0;
+        }
+
+        /* GALLERY GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* IMAGE LINKS - */
+        .art-link {
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .art-link:hover img {
+            transform: scale(1.08);
+            border-color: #A67B5B;
+            box-shadow: 0 10px 25px rgba(166, 123, 91, 0.4);
+        }
+
+        /* BACK BUTTON */
+        .btn-back {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #A67B5B;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 18px;
+            margin: 40px auto;
+            transition: all 0.3s;
+        }
+
+        .btn-back:hover {
+            background: #8B5E3C;
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            color: #5a4636;
+            font-style: italic;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 20px 50px;
+            }
+            
+            .nav-links {
+                gap: 25px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                margin-right: 0;
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 36px;
+                margin-top: 100px;
+            }
+            
+            .btn-category {
+                padding: 12px 20px;
+                font-size: 16px;
+                margin: 5px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .gallery-grid img {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 30px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">ArtWork</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <h1>‎♡✧ MY ARTWORK GALLERY ✧♡</h1>
+    <hr>
+
+    <!-- CATEGORY BUTTONS -->
+    <div class="category-buttons">
+        <button class="btn-category active" onclick="showGallery('traditional')">✏ TRADITIONAL ART</button>
+        <button class="btn-category" onclick="showGallery('digital')">💻 DIGITAL ART</button>
+    </div>
+
+    <!-- TRADITIONAL ART GALLERY -->
+    <div id="traditional" class="gallery-section" style="display: block;">
+        <h2>✏ Traditional Art Collection</h2>
+        <div class="gallery-grid">
+            
+            <a href="pictures/art1.jpg" class="art-link" target="_blank">
+                <img src="pictures/art1.jpg" alt="Traditional Art 1">
+            </a>
+            <a href="pictures/art2.jpg" class="art-link" target="_blank">
+                <img src="pictures/art2.jpg" alt="Traditional Art 2">
+            </a>
+            <a href="pictures/art3.jpg" class="art-link" target="_blank">
+                <img src="pictures/art3.jpg" alt="Traditional Art 3">
+            </a>
+            <a href="pictures/art4.jpg" class="art-link" target="_blank">
+                <img src="pictures/art4.jpg" alt="Traditional Art 4">
+            </a>
+            <a href="pictures/art5.jpg" class="art-link" target="_blank">
+                <img src="pictures/art5.jpg" alt="Traditional Art 5">
+            </a>
+        </div>
+    </div>
+
+    <!-- DIGITAL ART GALLERY -->
+    <div id="digital" class="gallery-section">
+        <h2>💻 Digital Art Collection</h2>
+        <div class="gallery-grid">
+            
+            <a href="pictures/digital2.png" class="art-link" target="_blank">
+                <img src="pictures/digital2.png" alt="Digital Art 1">
+            </a>
+            <a href="pictures/digital3.png" class="art-link" target="_blank">
+                <img src="pictures/digital3.png" alt="Digital Art 2">
+            </a>
+            <a href="pictures/digital4.png" class="art-link" target="_blank">
+                <img src="pictures/digital4.png" alt="Digital Art 3">
+            </a>
+            <a href="pictures/digital6.png" class="art-link" target="_blank">
+                <img src="pictures/digital6.png" alt="Digital Art 4">
+            </a>
+            <a href="pictures/digital7.png" class="art-link" target="_blank">
+                <img src="pictures/digital7.png" alt="Digital Art 5">
+            </a>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        &copy; 2024 Aina's Art Gallery | All artworks created by me
+        <br>
+        "Art is the lie that enables us to realize the truth."
+    </footer>
+
+    <script>
+        function showGallery(type) {
+            
+            document.querySelectorAll('.gallery-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            
+            document.getElementById(type).style.display = 'block';
+            
+           
+            document.querySelectorAll('.btn-category').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Favourite Sweets</title>
+
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to right, #f6c9b2, #fff8ee);
+        margin: 0;
+        padding: 0;
+        color: #5a4636;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-right: 50px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 35px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #AA6A4B;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: #AA6A4B;
+    }
+
+    header {
+        text-align: center;
+        padding: 100px 20px 30px;
+        color: #5a4636;
+        font-size: 32px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(170, 106, 75, 0.2);
+    }
+
+    .section {
+        width: 80%;
+        max-width: 800px;
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 30px auto;
+        box-shadow: 0 10px 30px rgba(170, 106, 75, 0.1);
+        transition: 0.4s;
+        border: 1px solid rgba(170, 106, 75, 0.1);
+    }
+
+    .section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(170, 106, 75, 0.15);
+    }
+
+    .section h2 {
+        color: #AA6A4B;
+        font-size: 28px;
+        margin-top: 0;
+        text-align: center;
+        border-bottom: 2px solid #f6c9b2;
+        padding-bottom: 10px;
+    }
+
+    .section img {
+        display: block;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 15px;
+        border: 4px solid #f6c9b2;
+        margin: 20px auto;
+        box-shadow: 0 5px 15px rgba(170, 106, 75, 0.1);
+        transition: 0.4s;
+    }
+
+    .section img:hover {
+        transform: scale(1.05);
+        border-color: #AA6A4B;
+    }
+
+    .section p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #5a4636;
+        text-align: justify;
+    }
+
+    .btn-home {
+        display: block;
+        width: 150px;
+        margin: 40px auto;
+        padding: 12px 22px;
+        background: #AA6A4B;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 18px;
+        text-align: center;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-home:hover {
+        background: #c28c6e;
+        transform: scale(1.1);
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: white;
+        color: #5a4636;
+        margin-top: 50px;
+        border-radius: 20px 20px 0 0;
+        font-style: italic;
+        border-top: 3px solid #f6c9b2;
+    }
+
+    @media (max-width: 1100px) {
+        .navbar {
+            padding: 20px 50px;
+        }
+        
+        .nav-links {
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 15px 30px;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .logo {
+            margin-right: 0;
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            gap: 20px;
+        }
+        
+        header {
+            font-size: 28px;
+            padding: 90px 20px 20px;
+        }
+        
+        .section {
+            width: 90%;
+            padding: 20px;
+        }
+        
+        .section h2 {
+            font-size: 24px;
+        }
+        
+        .section p {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            font-size: 16px;
+        }
+        
+        header {
+            font-size: 24px;
+        }
+        
+        .section img {
+            width: 95%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Fav Food</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <header>
+        🍰 My Favourite Sweets 🍹
+    </header>
+
+    <div class="section">
+        <h2>Favourite Food: Crispy Chicken Cheese</h2>
+        <img src="pictures/makanan.jpg" alt="Crispy Chicken Cheese">
+        <p>
+            My favourite dessert is <b>Crispy Chicken Cheese</b>. It is a delicious dish with golden, 
+            crunchy chicken on the outside and juicy meat inside. It is topped with melted cheese that 
+            is creamy and rich, making every bite flavorful and satisfying. The combination of crispy texture 
+            and cheesy goodness makes it a comfort food that I always enjoy.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Favourite Drink: Roasted Brown Sugar</h2>
+        <img src="pictures/daboba.jpg" alt="Roasted Brown Sugar">
+        <p>
+            My favourite drink is <b>Roasted Brown Sugar</b>. It has a rich, caramel-like sweetness with a warm 
+            roasted aroma that feels comforting in every sip. The deep brown sugar flavor is 
+            smooth and satisfying, making it taste like a cozy treat that always lifts my mood.
+        </p>
+    </div>
+
+    <footer>
+        &copy; 2025 Aina's Favourites | Made with 💖
+        <br>
+        Contact: aina.art@example.com
+    </footer>
+
+</body>
+</html>

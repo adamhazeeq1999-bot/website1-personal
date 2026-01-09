@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Idol – Eiichiro Oda</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: linear-gradient(to bottom right, #f6c9b2, #fff8ee);
+        text-align: center;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-right: 50px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 35px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #AA6A4B;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: #AA6A4B;
+    }
+
+    header {
+        padding: 100px 20px 30px;
+        animation: fadeIn 1s ease;
+    }
+    
+    header h1 {
+        font-size: 55px;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    
+    header p {
+        font-size: 22px;
+        color: #5a4636;
+    }
+
+    .box {
+        width: 70%;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(170, 106, 75, 0.1);
+        animation: fadeIn 1.3s ease;
+        border: 1px solid rgba(170, 106, 75, 0.1);
+    }
+
+    .box img {
+        width: 280px;
+        border-radius: 14px;
+        border: 5px solid #AA6A4B;
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+    }
+
+    .box img:hover {
+        transform: scale(1.02);
+    }
+
+    .box h2 {
+        color: #AA6A4B;
+        font-size: 32px;
+        margin-top: 0;
+    }
+
+    .box p {
+        font-size: 19px;
+        line-height: 1.5;
+        color: #5a4636;
+        text-align: justify;
+    }
+
+    .characters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 30px 0;
+    }
+    
+    .characters img {
+        width: 180px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 20px;
+        border: 5px solid #c28c6e;
+        transition: 0.3s;
+    }
+    
+    .characters img:hover {
+        transform: scale(1.12);
+        box-shadow: 0 10px 20px rgba(170, 106, 75, 0.3);
+    }
+
+    .btn {
+        display: inline-block;
+        font-size: 20px;
+        background: #AA6A4B;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin: 25px auto 40px;
+        transition: 0.3s;
+    }
+    
+    .btn:hover {
+        background: #c28c6e;
+        transform: scale(1.1);
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: white;
+        color: #5a4636;
+        font-style: italic;
+        margin-top: 40px;
+        border-radius: 20px 20px 0 0;
+        border-top: 3px solid #f6c9b2;
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; transform:translateY(20px); }
+        to   { opacity:1; transform:translateY(0); }
+    }
+
+    @media (max-width: 1100px) {
+        .navbar {
+            padding: 20px 50px;
+        }
+        
+        .nav-links {
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 15px 30px;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .logo {
+            margin-right: 0;
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            gap: 20px;
+        }
+        
+        header {
+            padding: 90px 20px 20px;
+        }
+        
+        header h1 {
+            font-size: 40px;
+        }
+        
+        .box {
+            width: 85%;
+            padding: 20px;
+        }
+        
+        .box img {
+            width: 200px;
+        }
+        
+        .box h2 {
+            font-size: 28px;
+        }
+        
+        .box p {
+            font-size: 17px;
+        }
+        
+        .characters img {
+            width: 150px;
+            height: 200px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            font-size: 16px;
+        }
+        
+        header h1 {
+            font-size: 32px;
+        }
+        
+        header p {
+            font-size: 18px;
+        }
+        
+        .characters img {
+            width: 120px;
+            height: 160px;
+        }
+        
+        .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">My Idol</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>🏴‍☠️ My Idol: Eiichiro Oda 🖊</h1>
+        <p>The genius behind One Piece</p>
+    </header>
+
+    <div class="box">
+        <img src="pictures/oda eiichiro.jpg" alt="Eiichiro Oda">
+        <h2>Why I Admire Him</h2>
+        <p>
+            Eiichiro Oda is the creator of One Piece, one of the most successful manga in history.
+            He started drawing at a young age and never gave up on his dream.
+            <br><br>
+            His storytelling, character design and world building inspire me as an artist.
+            I love how he creates emotional moments, amazing battles and unforgettable characters.
+            His dedication to his craft and ability to maintain consistency over decades of serialization
+            is truly inspiring for any aspiring artist like myself.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>❤️ My Favourite One Piece Characters</h2>
+
+        <div class="characters">
+            <img src="pictures/luffy.jpg" alt="Luffy">
+            <img src="pictures/ace.jpg" alt="Ace">
+            <img src="pictures/sabo.jpg" alt="Sabo">
+        </div>
+
+        <p>
+            I love these characters because they are strong, loyal and have meaningful dreams.
+            Luffy's determination to become Pirate King, Ace's protective nature, and Sabo's revolutionary
+            spirit all resonate with me. Their brotherly bond and individual journeys in the story
+            make them unforgettable characters who continue to inspire fans worldwide.
+            Also cute hehe..
+        </p>
+    </div>
+
+    <footer>
+        &copy; 2025 Aina's Portfolio | One Piece Fanpage
+        <br>
+        "Inherited Will, The Destiny of the Age, and The Dreams of the People."
+    </footer>
+
+</body>
+</html>

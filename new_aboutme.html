@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>About Me</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+            background: linear-gradient(to bottom right, #f6c9b2, #fff8ee);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #AA6A4B, #aa8353);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-right: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #AA6A4B;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #AA6A4B;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 70px;
+        }
+
+        header h1 {
+            font-size: 55px;
+            background: linear-gradient(90deg, #AA6A4B, #aa8353);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 22px;
+            color: #5a4636;
+        }
+
+        .profile {
+            width: 70%;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(170, 106, 75, 0.1);
+            display: flex;
+            gap: 25px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(170, 106, 75, 0.1);
+        }
+
+        .profile img {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #AA6A4B;
+            transition: transform 0.3s;
+        }
+
+        .profile img:hover {
+            transform: scale(1.02);
+        }
+
+        .profile-text h2 {
+            font-size: 35px;
+            margin: 0;
+            color: #AA6A4B;
+        }
+
+        .profile-text p {
+            font-size: 19px;
+            line-height: 1.5;
+            color: #5a4636;
+            text-align: justify;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            margin: 60px 0 0;
+            border-radius: 20px 20px 0 0;
+            border-top: 3px solid #f6c9b2;
+        }
+
+        .contact-section h2 {
+            font-size: 32px;
+            color: #AA6A4B;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            font-size: 20px;
+            background: #AA6A4B;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: #c28c6e;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #aa8353;
+            color: white;
+            font-size: 16px;
+            border-top: 3px solid #c28c6e;
+        }
+
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 20px 50px;
+            }
+            
+            .nav-links {
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                margin-right: 0;
+                font-size: 24px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            header h1 {
+                font-size: 40px;
+            }
+            
+            .profile {
+                width: 85%;
+                padding: 25px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-text h2 {
+                font-size: 28px;
+            }
+            
+            .profile-text p {
+                text-align: center;
+            }
+            
+            .nav-links a {
+                padding: 6px 15px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+            }
+            
+            header h1 {
+                font-size: 32px;
+            }
+            
+            header p {
+                font-size: 18px;
+            }
+            
+            .profile img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .contact-links a {
+                padding: 8px 20px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">About Me</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Hi, I'm Aina ✨</h1>
+        <p>Welcome to my personal portfolio website</p>
+    </header>
+
+    <section class="profile" id="about">
+        <img src="pictures/me3.jpg" alt="My Photo">
+        <div class="profile-text">
+            <h2>NURUL AINA NATASYA BINTI ROSLIZAM</h2>
+            <p>
+                Most people around me usually call me <b>Aina.</b>
+                I was born in <b>Hospital Tengku Ampuan Rahimah on 17 March 2005</b> and I am currently <b>20 years old.</b>
+                I enjoy turning imagination into colorful characters and stories. When I'm not drawing,
+                I spend time exploring music, games, and learning new things online.
+                <br><br>
+                I believe creativity makes life more exciting and I love sharing my work with others! 💙
+                <br><br>
+                Through this website, I want to share my passions, inspirations, and creative journey with everyone.
+                Each page represents a different aspect of who I am and what I love.
+            </p>
+        </div>
+    </section>
+
+    <div class="contact-section" id="contact">
+        <h2>💌 Contact Me 💌</h2>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/ai_.art/?hl=en">Instagram</a>
+            <a href="https://www.tiktok.com/@ai_artzy">TikTok</a>
+            <a href="https://discord.com/channels/@me">Discord</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Aina's Portfolio. All rights reserved. | Designed with creativity
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Social Media</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+            background: linear-gradient(to bottom right, #f6c9b2, #fff8ee);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #AA6A4B, #aa8353);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-right: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #AA6A4B;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #AA6A4B;
+        }
+
+        h1 {
+            font-size: 55px;
+            background: linear-gradient(90deg, #AA6A4B, #aa8353);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 40px 0 40px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 30px;
+            background: linear-gradient(90deg, #AA6A4B, #aa8353);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 40px 0 40px 0;
+            text-align: center;
+        }
+
+        table {
+            border: 1px solid #ddd;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 25px rgba(170, 106, 75, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(170, 106, 75, 0.2);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f6c9b2;
+        }
+
+        th {
+            background: linear-gradient(90deg, #AA6A4B, #c28c6e);
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        td {
+            color: #5a4636;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .image-table {
+            border: none;
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .image-table td {
+            border: none;
+            padding: 0;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #AA6A4B;
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            color: #5a4636;
+            font-size: 16px;
+            margin-top: 60px;
+            border-top: 3px solid #f6c9b2;
+        }
+
+        .social-section {
+            margin-bottom: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">My Social</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <h1>My Social Media Page</h1>
+
+    <div class="social-section">
+        <h2>Instagram</h2>
+
+        <table class="image-table" style="width: 30%;" align="center">
+            <tr>
+                <td><img src="pictures/Instagram.jpg"></td>
+            </tr>
+        </table>
+
+        <table align="center" style="width: 50%;">
+            <tr>
+                <th>Username</th>
+                <td>ai_.art</td>
+            </tr>
+            <tr>
+                <th>Followers</th>
+                <td>755</td>
+            </tr>
+            <tr>
+                <th>Following</th>
+                <td>530</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="social-section">
+        <h2>TikTok</h2>
+
+        <table class="image-table" style="width: 30%;" align="center">
+            <tr>
+                <td><img src="pictures/TikTok.jpg"></td>
+            </tr>
+        </table>
+
+        <table align="center" style="width: 50%;">
+            <tr>
+                <th>Username</th>
+                <td>ai_artzy</td>
+            </tr>
+            <tr>
+                <th>Followers</th>
+                <td>36.2k</td>
+            </tr>
+            <tr>
+                <th>Following</th>
+                <td>190</td>
+            </tr>
+        </table>
+    </div>
+
+    <footer>
+        &copy; 2025 Aina's Social Media Profile
+    </footer>
+
+</body>
+</html>

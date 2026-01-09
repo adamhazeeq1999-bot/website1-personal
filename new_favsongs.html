@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Favorite Song</title>
+
+<style>
+
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: linear-gradient(to bottom right, #f6c9b2, #fff8ee);
+        text-align: center;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 25px rgba(170, 106, 75, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-right: 50px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 35px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #AA6A4B;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        color: #AA6A4B;
+    }
+
+    header{
+        padding: 100px 20px 30px;
+        animation: fadeIn 1s ease;
+    }
+
+    header h1 {
+        font-size: 55px;
+        background: linear-gradient(90deg, #AA6A4B, #aa8353);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    header p {
+        font-size: 22px;
+        color: #5a4636;
+    }
+
+    .main-container {
+        width: 70%;
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(170, 106, 75, 0.1);
+        animation: fadeIn 1.3s ease;
+        border: 1px solid rgba(170, 106, 75, 0.1);
+    }
+
+    .song-cover {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 5px solid #AA6A4B;
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+    }
+
+    .song-cover:hover {
+        transform: scale(1.05);
+    }
+
+    .song-title {
+        font-size: 32px;
+        color: #AA6A4B;
+        margin: 0 0 5px 0;
+    }
+
+    .song-artist {
+        font-size: 22px;
+        color: #c28c6e;
+        margin: 0 0 25px 0;
+    }
+
+    .song-details {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 25px 0;
+        flex-wrap: wrap;
+    }
+
+    .detail-box {
+        background: #f6c9b2;
+        padding: 15px 25px;
+        border-radius: 15px;
+        border: 2px solid #c28c6e;
+        min-width: 150px;
+    }
+
+    .detail-label {
+        font-size: 12px;
+        color: #5a4636;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .detail-value {
+        font-size: 18px;
+        color: #AA6A4B;
+        font-weight: 600;
+    }
+
+    .player-section {
+        background: #fff8ee;
+        border-radius: 20px;
+        padding: 25px;
+        margin: 30px 0;
+        border: 2px solid #c28c6e;
+    }
+
+    .player-title {
+        font-size: 20px;
+        color: #AA6A4B;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    audio {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 25px;
+    }
+
+    audio::-webkit-media-controls-panel {
+        background: linear-gradient(90deg, #fff8ee, #f6c9b2);
+    }
+
+    .lyrics-section {
+        background: #fff8ee;
+        border-radius: 20px;
+        padding: 25px;
+        margin: 25px 0;
+        border-left: 5px solid #AA6A4B;
+    }
+
+    .section-title {
+        font-size: 24px;
+        color: #AA6A4B;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .lyrics-box {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        max-height: 250px;
+        overflow-y: auto;
+        text-align: left;
+    }
+
+    .lyrics-box::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .lyrics-box::-webkit-scrollbar-thumb {
+        background: #AA6A4B;
+        border-radius: 10px;
+    }
+
+    .lyrics {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #5a4636;
+        white-space: pre-line;
+    }
+
+    .reason-box {
+        background: #fff8ee;
+        border-radius: 20px;
+        padding: 25px;
+        margin: 25px 0 0 0;
+        border-top: 4px solid #AA6A4B;
+    }
+
+    .reason-text {
+        font-size: 17px;
+        line-height: 1.6;
+        color: #5a4636;
+        text-align: justify;
+    }
+
+    .btn {
+        display: inline-block;
+        font-size: 18px;
+        background: #AA6A4B;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 25px;
+        margin: 20px auto;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #c28c6e;
+        transform: scale(1.05);
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: white;
+        color: #5a4636;
+        font-style: italic;
+        margin-top: 40px;
+        border-radius: 20px 20px 0 0;
+        border-top: 3px solid #f6c9b2;
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; transform:translateY(20px); }
+        to { opacity:1; transform:translateY(0); }
+    }
+
+    @media (max-width: 1100px) {
+        .navbar {
+            padding: 20px 50px;
+        }
+
+        .nav-links {
+            gap: 25px;
+        }
+
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            padding: 15px 30px;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .logo {
+            margin-right: 0;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            gap: 20px;
+        }
+
+        header {
+            padding: 90px 20px 20px;
+        }
+
+        header h1 {
+            font-size: 40px;
+        }
+
+        .main-container {
+            width: 85%;
+            padding: 20px;
+        }
+
+        .song-cover {
+            width: 200px;
+            height: 200px;
+        }
+
+        .song-title {
+            font-size: 28px;
+        }
+
+        .song-artist {
+            font-size: 18px;
+        }
+
+        .detail-box {
+            min-width: 120px;
+            padding: 12px 20px;
+        }
+
+        .lyrics-box {
+            max-height: 200px;
+        }
+
+    }
+
+    @media (max-width: 480px) {
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .nav-links a {
+            font-size: 16px;
+        }
+        header h1 {
+            font-size: 32px;
+        }
+        header p {
+            font-size: 18px;
+        }
+        .song-cover {
+            width: 180px;
+            height: 180px;
+        }
+        .song-details {
+            flex-direction: column;
+            align-items: center;
+        }
+        .detail-box {
+            width: 80%;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Fav Song</div>
+        <div class="nav-links">
+            <a href="new_aboutme.html">Home</a>
+            <a href="new_hoby.html">My Hobby</a>
+            <a href="new_fooddrink.html">My Fav Sweets</a>
+            <a href="new_myidol.html">My Idol</a>
+            <a href="new_favsongs.html">My Fav Song</a>
+            <a href="new_table.html">My Social Media</a>
+            <a href="new_gallery.html">My Gallery</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>🎵 I'm Invincible - Ado 🎵</h1>
+        <p>My power song for creativity and motivation</p>
+    </header>
+
+    <div class="main-container">
+        <img src="pictures/uta.jpg" alt="I'm Invincible - Ado" class="song-cover">
+        <h2 class="song-title">I'm Invincible</h2>
+        <p class="song-artist">by Ado</p>
+
+        <div class="song-details">
+            <div class="detail-box">
+                <div class="detail-label">Genre</div>
+                <div class="detail-value">Anime Rock</div>
+            </div>
+            <div class="detail-box">
+                <div class="detail-label">Released</div>
+                <div class="detail-value">2022</div>
+            </div>
+        </div>
+
+        <div class="player-section">
+            <div class="player-title">
+                <span>🎧 Listen Now</span>
+            </div>
+            <audio controls>
+                <source src="music/ado-im-invincible.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="lyrics-section">
+            <h3 class="section-title">🎶 Lyrics</h3>
+            <div class="lyrics-box">
+                <div class="lyrics">
+Saa, kowaku wanai
+Fuan wanai
+Watashi no yume wa minna no negai
+Uta utaeba kokoro hareru
+Daijoubu yo watashi wa saikyou
+
+Watashi no koe ga
+Kotori wo sora e hakobu
+Nabiita fuku mo odoriko mitaide sa
+Anata no koe ga
+Watashi wo furuitataseru
+Toge ga sasatte shimatta nara hora hora oide
+
+Mita koto nai atarashii keshiki
+Zettai ni mireru no
+Nazenaraba
+Ikiterun da kyou mo
+
+Saa, nigiru te to te
+Hikari no hou e
+Minna no yume wa watashi no shiawase
+Aa, kitto doko ni mo nai anata shika mottenai
+Sono nukumori de watashi wa saikyou
+
+Mawarimichi demo
+Watashi ga arukeba seikai
+Wakatteiru kedo
+Hiku ni hikenakute sa
+
+Muri wa chotto shite demo
+Hana ni mizu wa agetaiwa
+Sou yappa shitai koto shinakya
+Kusaru deshou? kitai ni wa kotaeru no
+
+Itsuka kuru darou subarashiki jidai
+Ima wa tada matteru dareka wo, ne
+Kurikaeshiteru itamashii nigami
+Hi wo tomosu junbi wa dekiteru no?
+Iza ikan saikouhou
+
+Saa, kowaku wanai?
+Fuan wanai?
+Watashi no omoi wa minna ni wa omoi?
+Uta utaeba kiri mo hareru
+Migotona made ni watashi wa saikyou
+
+[Instrumental Break]
+
+Saa, nigiru te to te
+Hikari no hou e
+Minna no yume wa watashi no negai
+Kitto doko ni mo nai anata shika mottenai
+Sono yowasa ga terasu no
+Saiai no hibi
+Wasurenu chikai
+Itsuka no yume ga watashi no shinzou
+Nando demo nando demo iuwa
+"Watashi wa saikyou"
+"Anata to saikyou"
+
+"Anata to saikyou"
+                </div>
+            </div>
+        </div>
+
+        <div class="reason-box">
+            <h3 class="section-title">Why This Song is Special</h3>
+            <p class="reason-text">
+                "I'm Invincible" by Ado has become my personal anthem. Whenever I feel unmotivated or face creative blocks in my drawings, this song gives me an instant energy boost. The powerful vocals and intense rock melody perfectly capture the feeling of overcoming obstacles and believing in yourself. 
+                <br><br>
+                As an anime artist, I find Ado's music incredibly inspiring. Her voice carries so much emotion and strength, reminding me that every challenge makes me stronger. This song is always on repeat when I'm working on my best art pieces!
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2025 Aina's Music Collection | I'm Invincible - Ado<br>
+        From One Piece Film: Red Original Soundtrack
+    </footer>
+
+</body>
+</html>
